@@ -2,6 +2,7 @@ Global Game Jam 2024
 
 Tema: Make Me Laugh
 
+
 Sede: Desarrolladores de Videojuegos de Bahía Blanca
 
 Modalidad: On-line
@@ -14,7 +15,7 @@ Nombre de Trabajo: Banana Split
 
 Equipo:
 
-Bárbara Cerrudo - 2D Art
+Bárbara Cerrudo - Game Designer
 
 Melina Contreras - 3D Art
 
