@@ -39,7 +39,7 @@ public class DnDController : MonoBehaviour
         if (CastRay(out RaycastHit hitInfo, false))
         {
             Draggable draggable = hitInfo.collider.GetComponent<Draggable>();
-            if (draggable)
+            if (draggable && !draggable.Locked)
             {
                 dragging = draggable;
                 grabPosition = dragging.transform.position;
