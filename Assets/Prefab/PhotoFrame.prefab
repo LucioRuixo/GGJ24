@@ -127,6 +127,41 @@ MonoBehaviour:
   - {fileID: 7865952776066903354}
   - {fileID: 2879549856045602817}
   - {fileID: 4215174582543659916}
+  restoredTransform: {fileID: 0}
+  restorationAnimationDuration: 3
+  animationSpeed:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.50061274
+      value: 0.5000621
+      inSlope: 2.6320028
+      outSlope: 2.6320028
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.06597718
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1410837887710630328
 GameObject:
   m_ObjectHideFlags: 0

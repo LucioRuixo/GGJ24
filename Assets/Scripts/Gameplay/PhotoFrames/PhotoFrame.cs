@@ -5,8 +5,12 @@ using UnityEngine;
 public class PhotoFrame : MonoBehaviour
 {
     [SerializeField] private PhotoPiece[] photoPieces;
+
+    [Space]
+
     [SerializeField] private Transform restoredTransform;
     [SerializeField] private float restorationAnimationDuration = 1.0f;
+    [SerializeField] private AnimationCurve animationSpeed;
 
     private int photoPiecesAdded = 0;
     private bool photoRestored = false;
@@ -48,7 +52,7 @@ public class PhotoFrame : MonoBehaviour
 
         while (elapsed < restorationAnimationDuration)
         {
-            float interpolant = elapsed / restorationAnimationDuration;
+            float interpolant = animationSpeed.Evaluate(elapsed / restorationAnimationDuration);
             Vector3 currentPosition = Vector3.Lerp(initialPosition, finalPosition, interpolant);
             transform.position = currentPosition;
 
