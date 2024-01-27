@@ -6,7 +6,7 @@ public class DropTarget : MonoBehaviour
 
     private void Update()
     {
-        if (content) content.transform.position = transform.position;
+        if (content && !content.Grabbed) content.transform.position = transform.position;
     }
 
     public bool TrySetContent(Draggable content)

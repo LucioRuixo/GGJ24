@@ -42,6 +42,8 @@ public class DnDController : MonoBehaviour
             if (draggable && !draggable.Locked)
             {
                 dragging = draggable;
+                dragging.OnGrabbed();
+
                 grabPosition = dragging.transform.position;
             }
         }
@@ -51,8 +53,7 @@ public class DnDController : MonoBehaviour
     {
         if (!dragging) return;
 
-        Transform draggableTranform = dragging.transform;
-        draggableTranform.position = MouseWorldPosition;
+        dragging.transform.position = MouseWorldPosition;
     }
 
     private void Drop()

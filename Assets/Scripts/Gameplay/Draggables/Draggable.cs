@@ -6,6 +6,7 @@ public class Draggable : MonoBehaviour
 
     private DropTarget target;
 
+    public bool Grabbed { get; private set; } = false;
     public bool Locked { get; private set; } = false;
 
     public void SetTarget(DropTarget target)
@@ -16,9 +17,13 @@ public class Draggable : MonoBehaviour
         if (target == assignedTarget) Locked = true;
     }
 
+    public void OnGrabbed() => Grabbed = true;
+
     public void OnDropped()
     {
-        if (!target || Locked) return;
-        target.ClearContent();
+        if (Locked) return;
+
+        Grabbed = false;
+        target?.ClearContent();
     }
 }
