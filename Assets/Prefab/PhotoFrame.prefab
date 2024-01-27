@@ -128,7 +128,7 @@ MonoBehaviour:
   - {fileID: 2879549856045602817}
   - {fileID: 4215174582543659916}
   restoredTransform: {fileID: 0}
-  restorationAnimationDuration: 3
+  animationDuration: 3
   animationSpeed:
     serializedVersion: 2
     m_Curve:
@@ -162,6 +162,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  slerpCenterOffsetDirection: {x: 0, y: 1, z: 0}
+  slerpCenterOffsetFactor: 1
 --- !u!1 &1410837887710630328
 GameObject:
   m_ObjectHideFlags: 0

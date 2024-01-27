@@ -5,12 +5,17 @@ using UnityEngine;
 public class PhotoFrame : MonoBehaviour
 {
     [SerializeField] private PhotoPiece[] photoPieces;
+    [SerializeField] private Transform restoredTransform;
 
     [Space]
 
-    [SerializeField] private Transform restoredTransform;
-    [SerializeField] private float restorationAnimationDuration = 1.0f;
+    [SerializeField] private float animationDuration = 1.0f;
     [SerializeField] private AnimationCurve animationSpeed;
+    
+    [Space]
+
+    [SerializeField] private Vector3 slerpCenterOffsetDirection;
+    [SerializeField] private float slerpCenterOffsetFactor;
 
     private int photoPiecesAdded = 0;
     private bool photoRestored = false;
@@ -47,13 +52,20 @@ public class PhotoFrame : MonoBehaviour
     {
         float elapsed = 0.0f;
 
-        Vector3 initialPosition = transform.position;
-        Vector3 finalPosition = restoredTransform.position;
+        Vector3 startPosition = transform.position;
+        Vector3 endPosition = restoredTransform.position;
 
-        while (elapsed < restorationAnimationDuration)
+        Vector3 relativeCenterOffset = slerpCenterOffsetDirection.normalized * ((endPosition - startPosition).magnitude * slerpCenterOffsetFactor);
+        Vector3 relativeCenter = (endPosition - startPosition) * 0.5f + relativeCenterOffset;
+
+        while (elapsed < animationDuration)
         {
-            float interpolant = animationSpeed.Evaluate(elapsed / restorationAnimationDuration);
-            Vector3 currentPosition = Vector3.Lerp(initialPosition, finalPosition, interpolant);
+            float interpolant = animationSpeed.Evaluate(elapsed / animationDuration);
+
+            Vector3 startRelativeCenter = startPosition - relativeCenter;
+            Vector3 endRelativeCenter = endPosition - relativeCenter;
+            Vector3 currentPosition = Vector3.Slerp(startRelativeCenter, endRelativeCenter, interpolant) + relativeCenter;
+
             transform.position = currentPosition;
 
             yield return null;
@@ -61,6 +73,6 @@ public class PhotoFrame : MonoBehaviour
             elapsed += Time.deltaTime;
         }
 
-        transform.position = finalPosition;
+        transform.position = endPosition;
     }
 }
