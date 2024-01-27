@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Draggable : MonoBehaviour
@@ -9,12 +10,18 @@ public class Draggable : MonoBehaviour
     public bool Grabbed { get; private set; } = false;
     public bool Locked { get; private set; } = false;
 
+    public event Action OnLockedEvent;
+
     public void SetTarget(DropTarget target)
     {
         if (Locked) return;
 
         this.target = target;
-        if (target == assignedTarget) Locked = true;
+        if (target == assignedTarget)
+        {
+            Locked = true;
+            OnLockedEvent?.Invoke();
+        }
     }
 
     public void OnGrabbed() => Grabbed = true;
